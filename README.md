@@ -14,7 +14,7 @@ But wait -- that's only 2 dimensions. You can add some more through color, size,
 
 [![Swiss Roll](http://dl.dropbox.com/u/10506/blog/minifolds/swiss-roll.png)](http://minifolds.herokuapp.com/graphs/1?x=health&y=speed&size=intelligence&color=age&group=height)
 
-[![Swiss Roll Edit](http://dl.dropbox.com/u/10506/blog/minifolds/swiss-roll-edit.png)](http://minifolds.herokuapp.com/graphs/1?x=health&y=speed&size=intelligence&color=age&group=height)
+[![Swiss Roll Edit](http://dl.dropbox.com/u/10506/blog/minifolds/swiss-roll-edit1.png)](http://minifolds.herokuapp.com/graphs/1?x=health&y=speed&size=intelligence&color=age&group=height)
 
 And you can easily switch between what's getting plotted, and see all the information associated with each point.
 
