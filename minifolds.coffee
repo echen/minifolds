@@ -1,4 +1,34 @@
+# In order to access the scatterplot function globally, 
+# we need to define it as a property of the global object.
 root = exports ? this
+
+###
+Make a scotterplot.
+
+data        - Array of JSON objects.
+whichX      - String naming the property in each object to use as the x-coordinate.
+whichY      - String naming the property in each object to use as the y-coordinate.
+whichColor  - Optional string to use as the color. Must name a *numeric* property for now.
+whichSize   - Optional string to use as the size.
+whichGroup  - Optional string to use as a grouper. (When mousing over a point P, all points
+              with the same grouping value as P will be colored black.)
+
+Examples:
+
+  scatterplot(
+    [{weight: 150, height: 51, income: 1000, age: 32}, ...],
+    "weight",
+    "height",
+    "income",
+    "",
+    "age"
+  )
+    => Makes a scatterplot of weight vs. height, where points are
+       * colored according to income (low income = red, high income = blue)
+       * all points have the same size
+       * grouped according to age (all points with the same age will be colored
+         black on a mouseover)
+###
 
 root.scatterplot = (data, whichX, whichY, whichColor, whichSize, whichGroup) ->
   xs = (parseFloat(point[whichX]) for point in data)
@@ -15,7 +45,9 @@ root.scatterplot = (data, whichX, whichY, whichColor, whichSize, whichGroup) ->
   rightPadding = 10   # don't cut off the rightmost tick
   topPadding = 5      # don't cut off the topmost tick
   bottomPadding = 30  # space for x-axis labels
-  withinSelectionBounds = 5
+  
+  # only need to mouseover within this bound, in order to select a point
+  withinSelectionBounds = 5 
   
   x = d3.scale.linear().domain([d3.min(xs), d3.max(xs)]).range([0, w])
   y = d3.scale.linear().domain([d3.min(ys), d3.max(ys)]).range([h, 0])
