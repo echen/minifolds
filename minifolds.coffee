@@ -3,7 +3,7 @@
 root = exports ? this
 
 ###
-Make a scotterplot.
+Make a scatterplot.
 
 data        - Array of JSON objects.
 whichX      - String naming the property in each object to use as the x-coordinate.
@@ -29,7 +29,6 @@ Examples:
        * grouped according to age (all points with the same age will be colored
          black on a mouseover)
 ###
-
 root.scatterplot = (data, whichX, whichY, whichColor, whichSize, whichGroup) ->
   xs = (parseFloat(point[whichX]) for point in data)
   ys = (parseFloat(point[whichY]) for point in data)
@@ -167,7 +166,6 @@ root.scatterplot = (data, whichX, whichY, whichColor, whichSize, whichGroup) ->
         .attr("fill", (d) -> (if whichColor != "" then colorScale(d[whichColor]) else "black"))
         .attr("r", (d) -> (if whichSize != "" then sizeScale(d[whichSize]) else defaultCircleSize))
 
-          
   # clip so that only mouseovers within the graph grid
   # (e.g., not mouseovers on the x-axis label or whatever) 
   # fire off an event to update the point being selected.
@@ -216,6 +214,7 @@ root.scatterplot = (data, whichX, whichY, whichColor, whichSize, whichGroup) ->
         .classed("groupMousedover", true)
 
       # current point
+      # todo: why doesn't d3.select(this) work?
       d3
         .select("circle[index='#{i}']")
         .attr("r", mousedOverCircleSize)
